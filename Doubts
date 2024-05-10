@@ -1,9 +1,6 @@
-root@0346e830bfd5:~/bin# ls -l kubectl
--rwxr-xr-x 1 root root 49799168 May 10 08:15 kubectl
-root@0346e830bfd5:~/bin# kubectl version
-Client Version: v1.29.3-eks-ae9a62a
-Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
-Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fversion%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fversion%3Ftimeout%3D32s' src='/static/8319a84e/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
-Authentication required
-<!--
--->
+docker cp ~/.kube/config jenkins:/var/jenkins_home/.kube/config
+
+
+docker exec -it jenkins chmod 600 /var/jenkins_home/.kube/config
+
+docker exec -it jenkins kubectl get pods
