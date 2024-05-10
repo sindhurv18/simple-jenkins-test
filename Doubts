@@ -4,3 +4,9 @@ docker cp ~/.kube/config jenkins:/var/jenkins_home/.kube/config
 docker exec -it jenkins chmod 600 /var/jenkins_home/.kube/config
 
 docker exec -it jenkins kubectl get pods
+
+
+srajuveena@INBGL1WLX30685:~$ docker cp ~/.kube/config jenkins:/var/jenkins_home/.kube/config
+Successfully copied 8.19kB to jenkins:/var/jenkins_home/.kube/config
+Error response from daemon: No such container: jenkins
+srajuveena@INBGL1WLX30685:~$ docker ps | grep jenkins
