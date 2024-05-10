@@ -10,3 +10,6 @@ srajuveena@INBGL1WLX30685:~$ docker cp ~/.kube/config jenkins:/var/jenkins_home/
 Successfully copied 8.19kB to jenkins:/var/jenkins_home/.kube/config
 Error response from daemon: No such container: jenkins
 srajuveena@INBGL1WLX30685:~$ docker ps | grep jenkins
+
+srajuveena@INBGL1WLX30685:~$ docker exec -it 0346e830bfd5 kubectl get pods
+OCI runtime exec failed: exec failed: unable to start container process: exec: "kubectl": executable file not found in $PATH: unknown
