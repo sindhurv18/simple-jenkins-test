@@ -13,3 +13,7 @@ srajuveena@INBGL1WLX30685:~$ docker ps | grep jenkins
 
 srajuveena@INBGL1WLX30685:~$ docker exec -it 0346e830bfd5 kubectl get pods
 OCI runtime exec failed: exec failed: unable to start container process: exec: "kubectl": executable file not found in $PATH: unknown
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+mv kubectl /usr/local/bin/kubectl
