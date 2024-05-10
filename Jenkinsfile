@@ -2,11 +2,15 @@ pipeline {
     agent any
     stages {
         stage ("list file") {
-            sh "ls -lr"
+            steps{
+                sh "ls -lr"
+            }
+            
         }
-
         stage ("Deployment") {
-            sh "kubectl apply -f deployment.yaml"
+            steps {
+                sh "kubectl apply -f deployment.yaml"
+            }
         }
         
     }
