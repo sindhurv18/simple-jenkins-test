@@ -1,19 +1,9 @@
-root@0346e830bfd5:/# curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.29.3/2024-04-19/bin/linux/amd64/kubectl
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100 47.4M  100 47.4M    0     0   536k      0  0:01:30  0:01:30 --:--:--  245k
-root@0346e830bfd5:/# kubectl --version
-bash: kubectl: command not found
-root@0346e830bfd5:/# chmod +x ./kubectl
-root@0346e830bfd5:/# mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
-root@0346e830bfd5:/# echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
-root@0346e830bfd5:/# kubectl version --client
+root@0346e830bfd5:~/bin# ls -l kubectl
+-rwxr-xr-x 1 root root 49799168 May 10 08:15 kubectl
+root@0346e830bfd5:~/bin# kubectl version
 Client Version: v1.29.3-eks-ae9a62a
 Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
-
-
-But again , 
-
-root@0346e830bfd5:/var/jenkins_home/workspace/github-my-pipeline@tmp# kubectl --version
-error: unknown flag: --version
-See 'kubectl --help' for usage.
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fversion%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fversion%3Ftimeout%3D32s' src='/static/8319a84e/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+-->
