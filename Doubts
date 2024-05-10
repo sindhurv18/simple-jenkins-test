@@ -10,3 +10,10 @@ root@0346e830bfd5:/# echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
 root@0346e830bfd5:/# kubectl version --client
 Client Version: v1.29.3-eks-ae9a62a
 Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+
+
+But again , 
+
+root@0346e830bfd5:/var/jenkins_home/workspace/github-my-pipeline@tmp# kubectl --version
+error: unknown flag: --version
+See 'kubectl --help' for usage.
