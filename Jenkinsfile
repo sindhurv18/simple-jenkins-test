@@ -9,7 +9,10 @@ pipeline {
         }
         stage ("Deployment") {
             steps {
-                sh "kubectl apply -f deployment.yaml"
+
+                sh "kubectl get namespaces"
+                
+                sh "kubectl apply -f deployment.yaml -n devl-srv"
             }
         }
         
