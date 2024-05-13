@@ -48,3 +48,37 @@ pipeline {
         }
     }
 }
+
+--------------
+
+pipeline {
+    agent any
+    
+    environment {
+        // Define environment variables to store Kubernetes configuration
+        KUBECONFIG = '/tmp/kubeconfig'
+    }
+    
+    stages {
+        stage('Check Kubernetes Cluster') {
+            steps {
+                // Use the withCredentials block to securely access the kubeconfig file
+                withCredentials([file(credentialsId: 'rancher', variable: 'kubeconfig')]) {
+                    // Copy the kubeconfig file to a temporary location
+                    sh 'cp $kubeconfig $KUBECONFIG'
+                    
+                    // Set the KUBECONFIG environment variable to point to the copied kubeconfig file
+                    sh 'export KUBECONFIG=$KUBECONFIG'
+                    
+                    // Get the name of the Kubernetes cluster
+                    sh 'kubectl config get-clusters'
+                    
+                    // List pods in the gpm-portal namespace
+                    sh 'kubectl get pods -n gpm-portal'
+                    
+                    // Or perform other Kubernetes operations
+                }
+            }
+        }
+    }
+}
