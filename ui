@@ -17,3 +17,34 @@ Yes, you can upload the kubeconfig file to Jenkins through the UI. Here's how yo
 Once the kubeconfig file is uploaded as credentials in Jenkins, you can use them in your Jenkins pipelines or jobs to interact with the Kubernetes cluster.
 
 When configuring a Jenkins pipeline or job that needs to use the kubeconfig file, you can specify the credentials ID you assigned to the kubeconfig file. Jenkins will then securely manage the credentials and make them available to your pipeline or job during execution.
+
+
+
+pipeline {
+    agent any
+    
+    environment {
+        // Define environment variables to store Kubernetes configuration
+        KUBECONFIG = '/tmp/kubeconfig'
+    }
+    
+    stages {
+        stage('Deploy to Kubernetes') {
+            steps {
+                // Use the withCredentials block to securely access the kubeconfig file
+                withCredentials([file(credentialsId: 'your_credentials_id', variable: 'kubeconfig')]) {
+                    // Copy the kubeconfig file to a temporary location
+                    sh 'cp $kubeconfig $KUBECONFIG'
+                    
+                    // Set the KUBECONFIG environment variable to point to the copied kubeconfig file
+                    sh 'export KUBECONFIG=$KUBECONFIG'
+                    
+                    // Now you can use kubectl commands in your pipeline
+                    sh 'kubectl get pods'
+                    
+                    // Or perform other Kubernetes operations
+                }
+            }
+        }
+    }
+}
