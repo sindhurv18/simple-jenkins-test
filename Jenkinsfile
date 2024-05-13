@@ -15,6 +15,13 @@ pipeline {
                 sh "kubectl apply -f deployment.yaml -n devl-srv"
             }
         }
+
+        stage ("Check Deployment") {
+            steps {
+
+                sh 'kubectl get deploy -n devl-srv'
+            }
+        }
         
     }
 }
