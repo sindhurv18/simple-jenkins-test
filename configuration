@@ -1,0 +1,11 @@
+#Setting kubeconfig file
+
+docker cp ~/.kube/config <container_id>:/var/jenkins_home/.kube/config
+docker exec -it <container_id> chmod 600 /var/jenkins_home/.kube/config
+docker exec -it <container_id> kubectl get pods
+
+#Installing docker 
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+mv kubectl /usr/local/bin/kubectl
